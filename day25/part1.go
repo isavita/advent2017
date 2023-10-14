@@ -4,72 +4,74 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 )
 
-type State struct {
-	write [2]int
-	move  [2]int
-	next  [2]string
+func parseInput(filePath string) (string, int, map[string]map[int][]interface{}) {
+	file, err := os.Open(filePath)
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	var lines []string
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
+
+	initialState := string(lines[0][len(lines[0])-2])
+	steps, _ := strconv.Atoi(regexp.MustCompile(`\d+`).FindString(lines[1]))
+
+	states := make(map[string]map[int][]interface{})
+	for i := 3; i < len(lines); i += 10 {
+		state := string(lines[i][len(lines[i])-2])
+		value0, _ := strconv.Atoi(string(lines[i+2][len(lines[i+2])-2]))
+		move0 := 1
+		if strings.HasSuffix(lines[i+3], "left.") {
+			move0 = -1
+		}
+		nextState0 := string(lines[i+4][len(lines[i+4])-2])
+		value1, _ := strconv.Atoi(string(lines[i+6][len(lines[i+6])-2]))
+		move1 := 1
+		if strings.HasSuffix(lines[i+7], "left.") {
+			move1 = -1
+		}
+		nextState1 := string(lines[i+8][len(lines[i+8])-2])
+		states[state] = map[int][]interface{}{0: {value0, move0, nextState0}, 1: {value1, move1, nextState1}}
+	}
+	return initialState, steps, states
 }
 
-var (
-	tape         = make(map[int]int)
-	cursor       int
-	state        string
-	stateTrans   = make(map[string]State)
-	steps, count int
-)
+func runTuringMachine(filePath string) int {
+	state, steps, states := parseInput(filePath)
+	tape := make(map[int]int)
+	cursor := 0
+	checksum := 0
+
+	for i := 0; i < steps; i++ {
+		value, exists := tape[cursor]
+		if !exists {
+			value = 0
+		}
+		newValue := states[state][value][0].(int)
+		move := states[state][value][1].(int)
+		nextState := states[state][value][2].(string)
+
+		tape[cursor] = newValue
+		cursor += move
+		state = nextState
+	}
+
+	for _, v := range tape {
+		checksum += v
+	}
+	return checksum
+}
 
 func main() {
-	file, _ := os.Open("day25/input.txt")
-	defer file.Close()
-	scanner := bufio.NewScanner(file)
-	scanner.Scan() // Read the initial state line
-	state = strings.Split(scanner.Text(), " ")[3][:1]
-	scanner.Scan() // Read the steps line
-	stepsStr := strings.Split(scanner.Text(), " ")[5]
-	steps, _ = strconv.Atoi(stepsStr)
-	for scanner.Scan() {
-		parseInput(scanner)
-	}
-	for i := 0; i < steps; i++ {
-		execute()
-	}
-	for _, v := range tape {
-		count += v
-	}
-	fmt.Println(count)
-}
-
-func parseInput(scanner *bufio.Scanner) {
-	line := scanner.Text()
-	if strings.HasPrefix(line, "In state ") {
-		stateName := strings.Split(line, " ")[2][:1]
-		var trans State
-		for i := 0; i < 2; i++ {
-			scanner.Scan() // Read the value condition line
-			scanner.Scan() // Read the write action line
-			trans.write[i], _ = strconv.Atoi(strings.Split(scanner.Text(), " ")[4][:1])
-			scanner.Scan() // Read the move action line
-			moveDirection := strings.Split(scanner.Text(), " ")[6]
-			if moveDirection == "right." {
-				trans.move[i] = 1
-			} else {
-				trans.move[i] = -1
-			}
-			scanner.Scan() // Read the next state line
-			trans.next[i] = strings.Split(scanner.Text(), " ")[4][:1]
-		}
-		stateTrans[stateName] = trans
-	}
-}
-
-func execute() {
-	trans := stateTrans[state]
-	tapeVal := tape[cursor]
-	tape[cursor] = trans.write[tapeVal]
-	cursor += trans.move[tapeVal]
-	state = trans.next[tapeVal]
+	result := runTuringMachine("day25/input.txt")
+	fmt.Println(result)
 }
