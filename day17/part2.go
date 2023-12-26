@@ -2,10 +2,19 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"strconv"
+	"strings"
 )
 
 func main() {
-	steps := 343
+	data, err := os.ReadFile("day17/input.txt")
+	if err != nil {
+		fmt.Println("File reading error", err)
+		return
+	}
+
+	steps, _ := strconv.Atoi(strings.TrimSpace(string(data)))
 	currentPos := 0
 	valueAfterZero := 0
 
