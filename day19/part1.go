@@ -65,5 +65,5 @@ func main() {
 		y += dy
 	}
 
-	fmt.Printf("Letters: %s\n", string(letters))
+	fmt.Println(string(letters))
 }

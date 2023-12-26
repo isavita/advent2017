@@ -3,7 +3,9 @@ package main
 import (
 	"encoding/hex"
 	"fmt"
+	"os"
 	"strconv"
+	"strings"
 )
 
 func reverseSection(arr []int, start, length int) {
@@ -73,7 +75,13 @@ func dfs(x, y int, grid [][]int) {
 }
 
 func main() {
-	keyString := "nbysizxe"
+	data, err := os.ReadFile("day14/input.txt")
+	if err != nil {
+		fmt.Println("File reading error", err)
+		return
+	}
+
+	keyString := strings.TrimSpace(string(data))
 	grid := make([][]int, 128)
 	totalUsed := 0
 	regions := 0
@@ -101,6 +109,5 @@ func main() {
 		}
 	}
 
-	fmt.Println("Total used squares:", totalUsed)
-	fmt.Println("Total regions:", regions)
+	fmt.Println(regions)
 }

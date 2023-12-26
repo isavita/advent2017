@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-	"strings"
+	"os"
 	"strconv"
+	"strings"
 )
 
 func main() {
-	data, err := ioutil.ReadFile("input.txt")
+	data, err := os.ReadFile("day2/input.txt")
 	if err != nil {
 		fmt.Println("File reading error", err)
 		return
@@ -35,6 +35,5 @@ func main() {
 		checksum += (maxVal - minVal)
 	}
 
-	fmt.Println("The checksum is:", checksum)
+	fmt.Println(checksum)
 }
-

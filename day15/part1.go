@@ -40,5 +40,5 @@ func main() {
 		}
 	}
 
-	fmt.Println("Total matches:", matches)
+	fmt.Println(matches)
 }

@@ -67,5 +67,5 @@ func main() {
 	}
 
 	// Step 4: Print the highest value
-	fmt.Println("The highest value held in any register is:", highestValue)
+	fmt.Println(highestValue)
 }

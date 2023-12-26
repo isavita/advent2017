@@ -40,7 +40,7 @@ func main() {
 		delay++
 	}
 
-	fmt.Println("Minimum delay to pass through without getting caught:", delay)
+	fmt.Println(delay)
 }
 
 func passThrough(firewall map[int]*Scanner, delay int) bool {

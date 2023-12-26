@@ -55,5 +55,5 @@ func main() {
 		}
 	}
 
-	fmt.Println("Total number of groups:", groups)
+	fmt.Println(groups)
 }

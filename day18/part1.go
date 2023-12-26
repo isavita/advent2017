@@ -49,7 +49,7 @@ func main() {
 			registers[arg1] %= getValue(instruction[2], registers)
 		case "rcv":
 			if getValue(arg1, registers) != 0 {
-				fmt.Printf("Recovered frequency: %d\n", lastSound)
+				fmt.Println(lastSound)
 				return
 			}
 		case "jgz":

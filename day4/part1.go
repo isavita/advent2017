@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strings"
 )
 
 func main() {
-	data, err := ioutil.ReadFile("input.txt")
+	data, err := os.ReadFile("day4/input.txt")
 	if err != nil {
 		fmt.Println("File reading error", err)
 		return
@@ -34,6 +34,5 @@ func main() {
 		}
 	}
 
-	fmt.Println("The number of valid passphrases is:", validCount)
+	fmt.Println(validCount)
 }
-

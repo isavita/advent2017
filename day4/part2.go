@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"sort"
 	"strings"
 )
@@ -14,7 +14,7 @@ func sortString(w string) string {
 }
 
 func main() {
-	data, err := ioutil.ReadFile("day4/input.txt")
+	data, err := os.ReadFile("day4/input.txt")
 	if err != nil {
 		fmt.Println("File reading error", err)
 		return
@@ -42,5 +42,5 @@ func main() {
 		}
 	}
 
-	fmt.Println("The number of valid passphrases is:", validCount)
+	fmt.Println(validCount)
 }

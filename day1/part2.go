@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strings"
 )
 
 func main() {
-	data, err := ioutil.ReadFile("input.txt")
+	data, err := os.ReadFile("day1/input.txt")
 	if err != nil {
 		fmt.Println("File reading error", err)
 		return
@@ -24,6 +24,5 @@ func main() {
 		}
 	}
 
-	fmt.Println("The new captcha solution is:", sum)
+	fmt.Println(sum)
 }
-

@@ -69,6 +69,5 @@ func main() {
 		maxDistance = max(maxDistance, curDistance)
 	}
 
-	fmt.Printf("Final distance: %d\n", distance(x, y, z))
-	fmt.Printf("Maximum distance: %d\n", maxDistance)
+	fmt.Println(maxDistance)
 }

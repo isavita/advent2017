@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -38,7 +38,7 @@ func dfs(name string, programs map[string]Program) (int, bool) {
 						break
 					}
 				}
-				fmt.Printf("Unbalanced program: %s, it should weigh: %d\n", unbalancedProgram, programs[unbalancedProgram].Weight+(w2-w1))
+				fmt.Println(programs[unbalancedProgram].Weight + (w2 - w1))
 				return 0, false
 			}
 		}
@@ -48,7 +48,7 @@ func dfs(name string, programs map[string]Program) (int, bool) {
 
 func main() {
 	// Step 1: Read Input
-	data, err := ioutil.ReadFile("day7/input.txt")
+	data, err := os.ReadFile("day7/input.txt")
 	if err != nil {
 		fmt.Println("File reading error", err)
 		return

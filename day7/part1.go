@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"regexp"
 	"strings"
 )
 
 func main() {
 	// Step 1: Read Input
-	data, err := ioutil.ReadFile("day7/input.txt")
+	data, err := os.ReadFile("day7/input.txt")
 	if err != nil {
 		fmt.Println("File reading error", err)
 		return
@@ -41,7 +41,7 @@ func main() {
 	// Step 3: Find Root
 	for holder := range holderMap {
 		if !heldMap[holder] {
-			fmt.Println("The name of the bottom program is:", holder)
+			fmt.Println(holder)
 			return
 		}
 	}

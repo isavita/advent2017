@@ -74,5 +74,5 @@ func main() {
 		}
 	}
 
-	fmt.Printf("Particle closest to the origin in the long term: %d\n", closestParticle)
+	fmt.Println(closestParticle)
 }

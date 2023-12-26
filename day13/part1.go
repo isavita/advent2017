@@ -46,7 +46,7 @@ func main() {
 		}
 	}
 
-	fmt.Println("Severity of the whole trip:", severity)
+	fmt.Println(severity)
 }
 
 func maxDepth(firewall map[int]*Scanner) int {

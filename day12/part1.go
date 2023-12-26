@@ -57,5 +57,5 @@ func main() {
 		}
 	}
 
-	fmt.Println("Number of programs in the group containing ID 0:", count)
+	fmt.Println(count)
 }

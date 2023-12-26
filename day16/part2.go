@@ -73,7 +73,7 @@ func main() {
 		}
 	}
 
-	fmt.Println("Final arrangement after a billion dances:", string(programs))
+	fmt.Println(string(programs))
 }
 
 func spin(programs []rune, x int) {

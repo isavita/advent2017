@@ -46,5 +46,5 @@ func main() {
 		x, y = x+dx[dir], y+dy[dir] // Move forward
 	}
 
-	fmt.Println("Infections caused:", infectedCount)
+	fmt.Println(infectedCount)
 }

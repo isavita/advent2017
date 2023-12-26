@@ -3,7 +3,9 @@ package main
 import (
 	"encoding/hex"
 	"fmt"
+	"os"
 	"strconv"
+	"strings"
 )
 
 func reverseSection(arr []int, start, length int) {
@@ -62,7 +64,13 @@ func hexToBinary(hexStr string) string {
 }
 
 func main() {
-	keyString := "nbysizxe"
+	data, err := os.ReadFile("day14/input.txt")
+	if err != nil {
+		fmt.Println("File reading error", err)
+		return
+	}
+
+	keyString := strings.TrimSpace(string(data))
 	totalUsed := 0
 
 	for i := 0; i < 128; i++ {
@@ -77,5 +85,5 @@ func main() {
 		}
 	}
 
-	fmt.Println("Total used squares:", totalUsed)
+	fmt.Println(totalUsed)
 }

@@ -20,5 +20,5 @@ func main() {
 		currentPos++
 	}
 
-	fmt.Printf("The value after 0 is: %d\n", valueAfterZero)
+	fmt.Println(valueAfterZero)
 }

@@ -52,5 +52,5 @@ func main() {
 		pointer++
 	}
 
-	fmt.Println("Number of mul instructions:", mulCount)
+	fmt.Println(mulCount)
 }

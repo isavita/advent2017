@@ -66,5 +66,5 @@ func main() {
 		}
 	}
 
-	fmt.Println("The largest value in any register is:", maxValue)
+	fmt.Println(maxValue)
 }

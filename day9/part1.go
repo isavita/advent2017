@@ -51,5 +51,5 @@ func main() {
 	}
 
 	// Step 4: Print Score
-	fmt.Println("Total score:", score)
+	fmt.Println(score)
 }

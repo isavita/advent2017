@@ -54,6 +54,5 @@ func main() {
 	}
 
 	// Step 4: Print Results
-	fmt.Println("Total score:", score)
-	fmt.Println("Garbage count:", garbageCount)
+	fmt.Println(garbageCount)
 }

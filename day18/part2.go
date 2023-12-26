@@ -109,5 +109,5 @@ func main() {
 	EndProgram1:
 	}
 
-	fmt.Printf("Program 1 sent a value %d times\n", sendCount1)
+	fmt.Println(sendCount1)
 }

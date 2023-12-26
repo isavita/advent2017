@@ -21,7 +21,7 @@ func main() {
 	// Find the value immediately after the last inserted value (2017)
 	for i, val := range buffer {
 		if val == 2017 {
-			fmt.Printf("The value after 2017 is: %d\n", buffer[(i+1)%len(buffer)])
+			fmt.Println(buffer[(i+1)%len(buffer)])
 			break
 		}
 	}

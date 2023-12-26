@@ -40,7 +40,7 @@ func main() {
 		}
 	}
 
-	fmt.Println("Final arrangement:", string(programs))
+	fmt.Println(string(programs))
 }
 
 func spin(programs []rune, x int) {

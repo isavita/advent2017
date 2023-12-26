@@ -65,5 +65,5 @@ func main() {
 		particles = newParticles
 	}
 
-	fmt.Printf("Number of particles left: %d\n", len(particles))
+	fmt.Println(len(particles))
 }

@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 )
 
 func main() {
 	// Step 1: Read Input
-	data, err := ioutil.ReadFile("day6/input.txt")
+	data, err := os.ReadFile("day6/input.txt")
 	if err != nil {
 		fmt.Println("File reading error", err)
 		return

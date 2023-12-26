@@ -55,5 +55,5 @@ func main() {
 	used := make([]bool, len(components))
 	findStrongestBridge(components, used, 0, 0)
 
-	fmt.Println("The strength of the strongest bridge is:", maxStrength)
+	fmt.Println(maxStrength)
 }

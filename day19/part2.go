@@ -63,5 +63,5 @@ func main() {
 		y += dy
 	}
 
-	fmt.Printf("Steps: %d\n", steps)
+	fmt.Println(steps)
 }

@@ -61,5 +61,5 @@ func main() {
 	// Convert to hexadecimal
 	hexHash := hex.EncodeToString(denseHash)
 
-	fmt.Println("Knot Hash:", hexHash)
+	fmt.Println(hexHash)
 }

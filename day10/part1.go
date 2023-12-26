@@ -50,5 +50,5 @@ func main() {
 
 	// Multiply the first two numbers in the list
 	result := list[0] * list[1]
-	fmt.Println("Result:", result)
+	fmt.Println(result)
 }
